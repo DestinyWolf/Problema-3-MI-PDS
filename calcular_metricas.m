@@ -31,7 +31,7 @@ function [snr_db, cr, erro_harmonicas, erro_bandas] = calcular_metricas(sinal_or
     end
 
     % 4. Erro das bandas laterais
-    bandas_laterais = [20 25 30 35 91.5 148.5];
+    bandas_laterais = [20 25 35 40 91.5 148.5];
     num_bandas = length(bandas_laterais);
     indices_bandas = round((bandas_laterais*2*N)/fs);
 
