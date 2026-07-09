@@ -15,13 +15,13 @@ function size_on_kb = gerar_arquivo_comprimido(blocos_quantizados, delta, tam_bl
     %% Criação do arquivo
 
     % Cria um arquivo no modo escrita
-    f = fopen(nome_arquivo+".cmc", 'w');
+    f = fopen(strcat(nome_arquivo,'.cmc'), 'w');
     if f == -1
         error("Não foi possivel criar o arquivo binario, por favor verifique o nome ou se voce tem permissões para esta opereação!")
     end
     tam_vetor = length(vetor);
     num_pares_nz = length(valores_nz);
-    
+
     %% Escrita do cabeçalho (16 bytes)
     fwrite(f, delta, 'uint16');
     fwrite(f, tam_bloco, 'uint16');
@@ -36,8 +36,8 @@ function size_on_kb = gerar_arquivo_comprimido(blocos_quantizados, delta, tam_bl
 
     fclose(f);
 
-    info = dir(nome_arquivo+".cmc");
+    info = dir(strcat(nome_arquivo,'.cmc'));
     size_on_kb = (info.bytes/1024);
-    fprintf("\n -> arquivo gerado: %s salvo!\n", nome_arquivo+".cmc")
+    fprintf("\n -> arquivo gerado: %s salvo!\n", strcat(nome_arquivo,'.cmc'))
 
 end

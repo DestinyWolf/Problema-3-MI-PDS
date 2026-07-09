@@ -1,6 +1,6 @@
 %% Função responsavel por realizar a leitura de um arquivo comprimido e devolver as informações armazenadas nele
 function [blocos_quantizados, delta, N_bloco] = ler_arquivo_comprimido(nome_arquivo)
-    f = fopen(nome_arquivo+".cmc", "r");
+    f = fopen(strcat(nome_arquivo,'.cmc'), "r");
 
     if f == -1
         error("Não foi possivel encontrar o arquivo comprimido, verifique a ortografia do nome e tente novamente (digitar sem a extensão)");
@@ -35,6 +35,6 @@ function [blocos_quantizados, delta, N_bloco] = ler_arquivo_comprimido(nome_arqu
     num_blocos = length(vetor_original)/N_bloco;
     blocos_quantizados = reshape(vetor_original, N_bloco, num_blocos);
 
-    fprintf("-> Arquivo lido: %s\n", nome_arquivo+".cmc");
+    fprintf("-> Arquivo lido: %s\n", strcat(nome_arquivo,'.cmc'));
 
 end
